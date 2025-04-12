@@ -7,7 +7,7 @@ export default defineConfig({
     plugins: [
         vue(),
     ],
-    baseUrl: './',
+    baseUrl: './ComputerDesign_DisplayBoard/',
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
