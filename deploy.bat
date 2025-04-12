@@ -1,6 +1,10 @@
 @echo off
 echo Starting to deploy to GitHub Pages...
 
+git add .
+git commit -m "1"
+git push -u origin master
+
 rem 构建项目
 call npm run build
 
