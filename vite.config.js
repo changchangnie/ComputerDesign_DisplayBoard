@@ -7,10 +7,7 @@ export default defineConfig({
     plugins: [
         vue(),
     ],
-    base: process.env.NODE_ENV === 'production'
-        ? '/ComputerDesign_DisplayBoard/'
-        : './',
-
+    base: '/ComputerDesign_DisplayBoard/',
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
