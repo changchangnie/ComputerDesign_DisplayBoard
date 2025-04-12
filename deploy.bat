@@ -17,7 +17,7 @@ git add -A
 git commit -m "deploy"
 
 rem 推送到gh-pages分支
-git push -f git@github.com:changchangnie/ComputerDesign_DisplayBoard.git master:gh-pages
+git push -f git@github.com:changchangnie/changchangnie.github.io.git master
 
 rem 返回原目录
 cd ..
