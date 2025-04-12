@@ -17,5 +17,3 @@ git push -f git@github.com:changchangnie/ComputerDesign_DisplayBoard.git master:
 
 rem 返回原目录
 cd ..
-
-echo 部署完成!
