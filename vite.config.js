@@ -7,6 +7,9 @@ export default defineConfig({
     plugins: [
         vue(),
     ],
+    build: {
+        outDir: 'docs'
+    },
     base: '/ComputerDesign_DisplayBoard/',
     resolve: {
         alias: {
