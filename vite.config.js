@@ -10,6 +10,7 @@ export default defineConfig({
     base: process.env.NODE_ENV === 'production'
         ? '/ComputerDesign_DisplayBoard/'
         : './',
+
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))

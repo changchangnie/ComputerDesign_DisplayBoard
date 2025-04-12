@@ -1,5 +1,5 @@
 @echo off
-echo 开始部署到GitHub Pages...
+echo Starting to deploy to GitHub Pages...
 
 rem 构建项目
 call npm run build
