@@ -7,7 +7,7 @@
       <div class="grid-item grid-item-1">
         <h4 class="chart-title">研发投入与科技创新的回归关系</h4>
         <div class="chart-image adaptive-border" @click="toggleImage('linearRegression')">
-          <img src="/images/part1/linearRegression.png" alt="研发投入与科技创新的回归关系" v-if="imagesLoaded">
+          <img :src="getImageSrc('linearRegression')" alt="研发投入与科技创新的回归关系" v-if="imagesLoaded">
           <div class="hexagon-loader" v-else>
             <div class="hexagon-inner"></div>
           </div>
@@ -18,7 +18,7 @@
       <div class="grid-item grid-item-2">
         <h4 class="chart-title">各省投入强度</h4>
         <div class="chart-image main-image adaptive-border" @click="toggleImage('provincesInput')">
-          <img src="/images/part1/provincesInput.png" alt="各省投入强度" v-if="imagesLoaded">
+          <img :src="getImageSrc('provincesInput')" alt="各省投入强度" v-if="imagesLoaded">
           <div class="hexagon-loader" v-else>
             <div class="hexagon-inner"></div>
           </div>
@@ -29,7 +29,7 @@
       <div class="grid-item grid-item-3">
         <h4 class="chart-title">各国创新情况二维分布</h4>
         <div class="chart-image adaptive-border" @click="toggleImage('2d')">
-          <img src="/images/part1/2d.png" alt="各国创新情况二维分布" v-if="imagesLoaded">
+          <img :src="getImageSrc('2d')" alt="各国创新情况二维分布" v-if="imagesLoaded">
           <div class="hexagon-loader" v-else>
             <div class="hexagon-inner"></div>
           </div>
@@ -40,7 +40,7 @@
       <div class="grid-item grid-item-4">
         <h4 class="chart-title">产业升级聚类特征图</h4>
         <div class="chart-image adaptive-border" @click="toggleImage('radarMap')">
-          <img src="/images/part1/radarMap.png" alt="产业升级聚类特征图" v-if="imagesLoaded">
+          <img :src="getImageSrc('radarMap')" alt="产业升级聚类特征图" v-if="imagesLoaded">
           <div class="hexagon-loader" v-else>
             <div class="hexagon-inner"></div>
           </div>
@@ -99,7 +99,7 @@
       <div class="grid-item grid-item-6">
         <h4 class="chart-title">社会变革指标趋势</h4>
         <div class="chart-image adaptive-border" @click="toggleImage('socialReform')">
-          <img src="/images/part1/socialReform.png" alt="社会变革指标趋势" v-if="imagesLoaded">
+          <img :src="getImageSrc('socialReform')" alt="社会变革指标趋势" v-if="imagesLoaded">
           <div class="hexagon-loader" v-else>
             <div class="hexagon-inner"></div>
           </div>
@@ -167,33 +167,56 @@ export default {
           usaPercentage: 100
         }
       ],
+      basePaths: {
+        // 存储不同环境下的基础路径
+        local: '/',
+        production: './'
+      },
       imageInfo: {
         provincesInput: {
-          src: '/images/part1/provincesInput.png',
+          path: 'images/part1/provincesInput.png',
           alt: '各省投入强度',
           title: '各省投入强度'
         },
         linearRegression: {
-          src: '/images/part1/linearRegression.png',
+          path: 'images/part1/linearRegression.png',
           alt: '研发投入与科技创新的回归关系',
           title: '研发投入与科技创新的回归关系'
         },
         '2d': {
-          src: '/images/part1/2d.png',
+          path: 'images/part1/2d.png',
           alt: '各国创新情况二维分布',
           title: '各国创新情况二维分布'
         },
         radarMap: {
-          src: '/images/part1/radarMap.png',
+          path: 'images/part1/radarMap.png',
           alt: '产业升级聚类特征图',
           title: '产业升级聚类特征图'
         },
         socialReform: {
-          src: '/images/part1/socialReform.png',
+          path: 'images/part1/socialReform.png',
           alt: '社会变革指标趋势',
           title: '社会变革指标趋势'
         }
       }
+    }
+  },
+  computed: {
+    // 根据环境确定基础路径
+    basePath() {
+      // 检查当前URL是否包含GitHub Pages域名
+      if (window.location.href.includes('github.io')) {
+        return this.basePaths.production;
+      }
+      return this.basePaths.local;
+    },
+    // 为每个图片生成完整路径
+    imageSrcs() {
+      const srcs = {};
+      for (const key in this.imageInfo) {
+        srcs[key] = this.basePath + this.imageInfo[key].path;
+      }
+      return srcs;
     }
   },
   mounted() {
@@ -205,17 +228,22 @@ export default {
   },
   methods: {
     toggleImage(imageKey) {
-      if (this.isZoomed && this.zoomedImageSrc === this.imageInfo[imageKey].src) {
+      if (this.isZoomed && this.zoomedImageSrc === this.getImageSrc(imageKey)) {
         this.hideImage();
       } else {
         this.showImage(imageKey);
       }
     },
     
+    // 获取图片完整路径的方法
+    getImageSrc(imageKey) {
+      return this.imageSrcs[imageKey];
+    },
+    
     showImage(imageKey) {
       if (!this.imageInfo[imageKey]) return;
       
-      this.zoomedImageSrc = this.imageInfo[imageKey].src;
+      this.zoomedImageSrc = this.getImageSrc(imageKey);
       this.zoomedImageAlt = this.imageInfo[imageKey].alt;
       this.zoomedImageTitle = this.imageInfo[imageKey].title;
       
