@@ -33,7 +33,7 @@
         <div class="panel panel-1-3">
           <h4 class="chart-title">聚类结果分析</h4>
           <div class="chart-image adaptive-border" @click="toggleImage('analysis')">
-            <img :src="getImageSrc('analysis')" alt="聚类结果分析" v-if="imagesLoaded">
+            <img src="/images/part2/analysis.png" alt="聚类结果分析" v-if="imagesLoaded">
             <div class="hexagon-loader" v-else>
               <div class="hexagon-inner"></div>
             </div>
@@ -46,7 +46,7 @@
         <div class="panel panel-2">
           <h4 class="chart-title">各国经济行为与科创特征</h4>
           <div class="chart-image adaptive-border" @click="toggleImage('capitalTech')">
-            <img :src="getImageSrc('capitalTech')" alt="各国经济行为与科创特征" v-if="imagesLoaded">
+            <img src="/images/part2/capitalTech.png" alt="各国经济行为与科创特征" v-if="imagesLoaded">
             <div class="hexagon-loader" v-else>
               <div class="hexagon-inner"></div>
             </div>
@@ -111,41 +111,18 @@ export default {
           countries: 'France, Japan, Luxembourg, Saudi Arabia'
         }
       ],
-      basePaths: {
-        // 存储不同环境下的基础路径
-        local: '/',
-        production: './'
-      },
       imageInfo: {
         analysis: {
-          path: 'images/part2/analysis.png',
+          src: '/images/part2/analysis.png',
           alt: '聚类结果分析',
           title: '聚类结果分析'
         },
         capitalTech: {
-          path: 'images/part2/capitalTech.png',
+          src: '/images/part2/capitalTech.png',
           alt: '各国经济行为与科创特征',
           title: '各国经济行为与科创特征'
         }
       }
-    }
-  },
-  computed: {
-    // 根据环境确定基础路径
-    basePath() {
-      // 检查当前URL是否包含GitHub Pages域名
-      if (window.location.href.includes('github.io')) {
-        return this.basePaths.production;
-      }
-      return this.basePaths.local;
-    },
-    // 为每个图片生成完整路径
-    imageSrcs() {
-      const srcs = {};
-      for (const key in this.imageInfo) {
-        srcs[key] = this.basePath + this.imageInfo[key].path;
-      }
-      return srcs;
     }
   },
   mounted() {
@@ -157,22 +134,17 @@ export default {
   },
   methods: {
     toggleImage(imageKey) {
-      if (this.isZoomed && this.zoomedImageSrc === this.getImageSrc(imageKey)) {
+      if (this.isZoomed && this.zoomedImageSrc === this.imageInfo[imageKey].src) {
         this.hideImage();
       } else {
         this.showImage(imageKey);
       }
     },
     
-    // 获取图片完整路径的方法
-    getImageSrc(imageKey) {
-      return this.imageSrcs[imageKey];
-    },
-    
     showImage(imageKey) {
       if (!this.imageInfo[imageKey]) return;
       
-      this.zoomedImageSrc = this.getImageSrc(imageKey);
+      this.zoomedImageSrc = this.imageInfo[imageKey].src;
       this.zoomedImageAlt = this.imageInfo[imageKey].alt;
       this.zoomedImageTitle = this.imageInfo[imageKey].title;
       
