@@ -24,6 +24,7 @@
       <Section3 :class="{ active: activeSection === 3 }" />
     </div>
   </div>
+  <div/>
 </template>
 
 <script>
