@@ -9,7 +9,7 @@ rem 构建项目
 call npm run build
 
 rem 进入构建目录
-cd dist
+cd docs
 
 rem 初始化git仓库
 git init
