@@ -1,277 +1,248 @@
 <template>
-  <section class="content-section">
-    <h2 class="section-title">基于核心脉络与动态因素的回环分析</h2>
-    
-    <div class="tech-dashboard">
-      <!-- 未来可以添加实际图表和内容 -->
-      <div class="cyber-grid">
-        <div class="grid-overlay"></div>
-        <div class="cyber-circle"></div>
-        <div class="center-node">
-          <div class="pulse-ring"></div>
-          <div class="pulse-core"></div>
+  <div class="section3">
+    <div class="section-container">
+      <!-- 第一部分 -->
+      <div class="section-part part1">
+        <h2 class="part-title">研发-创新-产业-社会循环关系</h2>
+        <div class="part-content">
+          <div class="image-container">
+            <img src="/images/part3/p1.png" alt="研发-创新-产业-社会循环关系" />
+          </div>
+          <div class="description-container">
+            <p class="description-text">
+              展示了研发投入、技术创新、产业升级与社会变革之间的基本循环关系，构成创新驱动发展的核心脉络层。
+            </p>
+          </div>
         </div>
-        <div class="center-text">
-          <p class="placeholder-text">基于核心脉络与动态因素的回环分析<br>图片将在稍后添加</p>
+        <div class="arrow">
+          <div class="arrow-line"></div>
+          <div class="arrow-head"></div>
         </div>
-        <div class="cyber-line line1"></div>
-        <div class="cyber-line line2"></div>
-        <div class="cyber-line line3"></div>
-        <div class="cyber-line line4"></div>
+      </div>
+      
+      <!-- 第二部分 -->
+      <div class="section-part part2">
+        <h2 class="part-title">社会变革反作用于研发投入的变化</h2>
+        <div class="part-content">
+          <div class="image-container">
+            <img src="/images/part3/p2.png" alt="社会变革反作用于研发投入的变化" />
+          </div>
+          <div class="description-container">
+            <p class="description-text">
+              分析变量随时间变化的动态关系建立的一类路径的动态关系图示例，展示了社会变革反作用于研发投入的动态关系。
+            </p>
+          </div>
+        </div>
+        <div class="arrow">
+          <div class="arrow-line"></div>
+          <div class="arrow-head"></div>
+        </div>
+      </div>
+      
+      <!-- 第三部分 -->
+      <div class="section-part part3">
+        <h2 class="part-title">变量定量关系网络</h2>
+        <div class="part-content">
+          <div class="image-container">
+            <img src="/images/part3/p3.png" alt="变量定量关系网络" />
+          </div>
+          <div class="description-container">
+            <p class="description-text">
+              反向传播层的基本结构：社会变革反作用于研发投入，产业升级通过影响政策支持继而反作用于研发投入等多重回环关系。
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-// 引入ECharts库，稍后可以用于实现可视化
-import * as echarts from 'echarts'
-
 export default {
-  name: 'Section3',
-  data() {
-    return {
-      chartInitialized: false,
-      imagesLoaded: false
-    }
-  },
-  mounted() {
-    console.log('Section 3 mounted')
-    // 模拟图片加载过程
-    setTimeout(() => {
-      this.imagesLoaded = true
-    }, 800)
-  },
-  methods: {
-    initChart() {
-      // 初始化图表的代码将放在这里
-      // 例如：
-      // const chartDom = this.$refs.chartContainer
-      // const myChart = echarts.init(chartDom)
-      // const option = { ... }
-      // myChart.setOption(option)
-      // this.chartInitialized = true
-    }
-  }
+  name: 'Section3'
 }
 </script>
 
 <style scoped>
-.tech-dashboard {
+/* 添加全局字体导入 */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&family=Orbitron:wght@400;500;600&display=swap');
+
+.section3 {
   width: 100%;
   height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: rgba(10, 25, 50, 0.8);
+  color: white;
+}
+
+.section-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-  padding: 10px;
-}
-
-.cyber-grid {
-  width: 90%;
-  height: 90%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1000px;
-}
-
-.grid-overlay {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background-image: 
-    linear-gradient(rgba(61, 193, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(61, 193, 255, 0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
-  transform: rotateX(60deg);
-  animation: grid-move 20s linear infinite;
-}
-
-.cyber-circle {
-  position: absolute;
-  width: 70%;
-  height: 70%;
-  border-radius: 50%;
-  border: 2px solid rgba(61, 193, 255, 0.2);
-  box-shadow: 0 0 50px rgba(61, 193, 255, 0.2), inset 0 0 30px rgba(61, 193, 255, 0.1);
-}
-
-.center-node {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pulse-ring {
-  position: absolute;
+  gap: 40px;
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 2px solid rgba(61, 193, 255, 0.5);
-  animation: pulse-out 2s ease-out infinite;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.pulse-core {
-  width: 20px;
-  height: 20px;
-  background-color: rgba(61, 193, 255, 0.8);
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(61, 193, 255, 0.8);
-  animation: pulse-core 2s ease-out infinite alternate;
-}
-
-.center-text {
-  position: absolute;
-  top: 55%;
-  text-align: center;
-  width: 100%;
-  padding: 0 40px;
-}
-
-.cyber-line {
-  position: absolute;
-  background: linear-gradient(90deg, rgba(61, 193, 255, 0), rgba(61, 193, 255, 0.6), rgba(61, 193, 255, 0));
-  height: 1px;
-  width: 40%;
-  top: 50%;
-  animation: line-pulse 3s infinite alternate;
-}
-
-.line1 {
-  transform: rotate(0deg);
-  animation-delay: 0s;
-  left: 55%;
-}
-
-.line2 {
-  transform: rotate(90deg);
-  animation-delay: 0.5s;
-  top: 30%;
-  left: 50%;
-}
-
-.line3 {
-  transform: rotate(180deg);
-  animation-delay: 1s;
-  left: 5%;
-}
-
-.line4 {
-  transform: rotate(-90deg);
-  animation-delay: 1.5s;
-  top: 70%;
-  left: 50%;
-}
-
-.placeholder-text {
-  color: #7dd3fc;
-  font-size: 20px;
-  text-align: center;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 500;
-  line-height: 1.8;
-  letter-spacing: 1px;
-  text-shadow: 0 0 10px rgba(125, 211, 252, 0.5);
+.section-part {
   position: relative;
-  z-index: 2;
-}
-
-@keyframes grid-move {
-  from {
-    transform: rotateX(60deg) translateY(0);
-  }
-  to {
-    transform: rotateX(60deg) translateY(40px);
-  }
-}
-
-@keyframes pulse-out {
-  0% {
-    transform: scale(0.8);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(3);
-    opacity: 0;
-  }
-}
-
-@keyframes pulse-core {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-}
-
-@keyframes line-pulse {
-  0% {
-    opacity: 0.3;
-    width: 30%;
-  }
-  100% {
-    opacity: 1;
-    width: 45%;
-  }
-}
-
-@media (max-width: 768px) {
-  .cyber-grid {
-    width: 95%;
-    height: 70%;
-  }
-  
-  .placeholder-text {
-    font-size: 18px;
-  }
-  
-  .cyber-line {
-    width: 35%;
-  }
-}
-
-/* 对于图片的样式 */
-.chart-image {
   width: 100%;
-  height: calc(100% - 30px);
-  border-radius: 8px;
-  overflow: hidden;
+  padding: 20px;
+  border-radius: 10px;
   background-color: rgba(15, 30, 60, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(92, 187, 255, 0.3);
   backdrop-filter: blur(4px);
+}
+
+.part-title {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 30px;
+  color: #7dd3fc;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(92, 187, 255, 0.5);
+  font-family: 'Rajdhani', 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+.part-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  gap: 5px;
+}
+
+.image-container {
+  flex: 0 0 60%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  border: 1px solid rgba(92, 187, 255, 0.3);
-  padding: 0;
 }
 
-.chart-image img {
+.description-container {
+  flex: 0 0 38%;
+}
+
+.description-text {
+  color: #7dd3fc;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: left;
+  padding: 12px;
+  border-left: 3px solid #5cbbff;
+  background-color: rgba(15, 30, 60, 0.3);
+  border-radius: 0 5px 5px 0;
+  font-family: 'Rajdhani', 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 8px rgba(92, 187, 255, 0.4);
+}
+
+.part-content img {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 300px;
   object-fit: contain;
-  display: block;
-  width: auto;
-  height: auto;
+  background: transparent;
+  filter: drop-shadow(0 0 8px rgba(92, 187, 255, 0.3));
 }
 
-.chart-title {
-  font-size: 16px;
-  color: #5cbbff;
-  margin-bottom: 10px;
-  text-align: center;
-  font-weight: 500;
-  text-shadow: 0 0 10px rgba(92, 187, 255, 0.5);
-  letter-spacing: 1px;
+.arrow {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  z-index: 10;
+}
+
+.arrow-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background-color: #5cbbff;
+  box-shadow: 0 0 8px rgba(92, 187, 255, 0.5);
+}
+
+.arrow-head {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #5cbbff;
+  filter: drop-shadow(0 0 5px rgba(92, 187, 255, 0.5));
+}
+
+/* 增加逻辑关系的视觉效果 */
+.part1 {
+  border-left: 5px solid #5cbbff;
+}
+
+.part2 {
+  border-left: 5px solid #61dafb;
+}
+
+.part3 {
+  border-left: 5px solid #bb86fc;
+}
+
+/* 为第二张图片添加特殊样式 */
+.part2 .image-container {
+  flex: 0 0 50%;
+}
+
+.part2 .description-container {
+  flex: 0 0 50%;
+  margin-left: -20px;
+}
+
+.part2 .part-content {
+  gap: 0;
+}
+
+.part2 .description-text {
+  border-left-width: 2px;
+  padding-left: 8px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .part-content {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .image-container, 
+  .description-container,
+  .part2 .image-container,
+  .part2 .description-container {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+  
+  .description-text {
+    font-size: 16px;
+    border-left: none;
+    border-top: 3px solid #5cbbff;
+    border-radius: 0 0 5px 5px;
+  }
+  
+  .section-part {
+    padding: 15px;
+  }
+  
+  .part-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
 }
 </style> 

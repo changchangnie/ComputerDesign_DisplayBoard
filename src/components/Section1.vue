@@ -51,7 +51,7 @@
       <div class="grid-item grid-item-5">
         <h4 class="chart-title">中美研发投入对比(2022)</h4>
         <div class="research-comparison-table">
-          <div class="table-container" v-if="imagesLoaded">
+          <div class="table-container scrollable-table" v-if="imagesLoaded">
             <table class="data-table">
               <thead>
                 <tr>
@@ -662,57 +662,65 @@ export default {
   }
 }
 
+/* 中美研发对比表格样式 */
 .research-comparison-table {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* 修改为从顶部开始对齐 */
-  align-items: center;
   width: 100%;
   height: 100%;
+  background-color: rgba(15, 30, 60, 0.5);
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  border: 1px solid rgba(92, 187, 255, 0.3);
   overflow: hidden;
-  padding-bottom: 10px; /* 底部添加一些间距 */
+  position: relative;
 }
 
 .table-container {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 0.8s ease forwards;
+  padding: 10px;
+}
+
+.scrollable-table {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(92, 187, 255, 0.5) rgba(15, 30, 60, 0.2);
+}
+
+.scrollable-table::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollable-table::-webkit-scrollbar-track {
+  background: rgba(15, 30, 60, 0.2);
+  border-radius: 3px;
+}
+
+.scrollable-table::-webkit-scrollbar-thumb {
+  background-color: rgba(92, 187, 255, 0.5);
+  border-radius: 3px;
 }
 
 .data-table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  color: #e4e6eb;
-  font-size: 12px;
-  background-color: rgba(15, 30, 60, 0.3);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-collapse: collapse;
+  color: #fff;
 }
 
 .data-table th {
-  padding: 12px 8px;
-  background-color: rgba(9, 25, 62, 0.8);
+  padding: 10px 5px;
   text-align: left;
   font-weight: 500;
+  font-size: 14px;
   color: #7dd3fc;
-  border-bottom: 1px solid rgba(64, 156, 255, 0.3);
-  text-shadow: 0 0 8px rgba(92, 187, 255, 0.4);
+  background-color: rgba(15, 30, 60, 0.7);
+  border-bottom: 1px solid rgba(92, 187, 255, 0.3);
 }
 
 .data-table td {
-  padding: 10px 8px;
-  border-bottom: 1px solid rgba(64, 156, 255, 0.1);
-  position: relative;
-}
-
-.data-table tr:last-child td {
-  border-bottom: none;
+  padding: 8px 5px;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(92, 187, 255, 0.2);
 }
 
 .country-header {
