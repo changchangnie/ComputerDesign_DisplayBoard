@@ -16,9 +16,9 @@
       
       <!-- 位置2: 中部 - 主要图表（扩大1.5倍） -->
       <div class="grid-item grid-item-2">
-        <h4 class="chart-title">各省投入强度</h4>
-        <div class="chart-image main-image adaptive-border" @click="toggleImage('provincesInput')">
-          <img src="/images/part1/provincesInput.png" alt="各省投入强度" v-if="imagesLoaded">
+        <h4 class="chart-title">2023年各地区R&D经费投入强度对比</h4>
+        <div class="chart-image main-image adaptive-border" @click="toggleImage('comparison')">
+          <img src="/images/part1/comparison.png" alt="2023年各地区R&D经费投入强度对比" v-if="imagesLoaded">
           <div class="hexagon-loader" v-else>
             <div class="hexagon-inner"></div>
           </div>
@@ -168,10 +168,10 @@ export default {
         }
       ],
       imageInfo: {
-        provincesInput: {
-          src: '/images/part1/provincesInput.png',
-          alt: '各省投入强度',
-          title: '各省投入强度'
+        comparison: {
+          src: '/images/part1/comparison.png',
+          alt: '2023年各地区R&D经费投入强度对比',
+          title: '2023年各地区R&D经费投入强度对比'
         },
         linearRegression: {
           src: '/images/part1/linearRegression.png',
