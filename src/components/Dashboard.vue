@@ -27,6 +27,12 @@
           @click="changeSection(3)">
           反馈传播层
         </button>
+        <button
+          class="nav-button" 
+          :class="{ active: activeSection === 4 }" 
+          @click="changeSection(4)">
+          交互结论
+        </button>
       </div>
     </header>
     
@@ -35,6 +41,7 @@
       <Section1 :class="{ active: activeSection === 1 }" />
       <Section2 :class="{ active: activeSection === 2 }" />
       <Section3 :class="{ active: activeSection === 3 }" />
+      <Section4 :class="{ active: activeSection === 4 }" />
     </div>
   </div>
   <div/>
@@ -45,6 +52,7 @@ import Section0 from './Section0.vue'
 import Section1 from './Section1.vue'
 import Section2 from './Section2.vue'
 import Section3 from './Section3.vue'
+import Section4 from './Section4.vue'
 
 export default {
   name: 'Dashboard',
@@ -52,7 +60,8 @@ export default {
     Section0,
     Section1,
     Section2,
-    Section3
+    Section3,
+    Section4
   },
   data() {
     return {
