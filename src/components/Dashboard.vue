@@ -31,7 +31,7 @@
           class="nav-button" 
           :class="{ active: activeSection === 4 }" 
           @click="changeSection(4)">
-          交互结论
+          研究结论
         </button>
       </div>
     </header>

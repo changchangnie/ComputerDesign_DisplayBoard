@@ -17,16 +17,16 @@
     </div>
     
     <div class="conclusion-content">
-      <component :is="currentComponent" />
+      <component :is="currentComponent" :key="activeConclusion" />
     </div>
   </div>
 </template>
 
 <script>
-import Conclusion1 from './Section4/Conclusion1.vue'
-import Conclusion2 from './Section4/Conclusion2.vue'
-import Conclusion3 from './Section4/Conclusion3.vue'
-import Conclusion4 from './Section4/Conclusion4.vue'
+import Conclusion1 from './Conclusion1.vue'
+import Conclusion2 from './Conclusion2.vue'
+import Conclusion3 from './Conclusion3.vue'
+import Conclusion4 from './Conclusion4.vue'
 
 export default {
   name: 'Section4',
@@ -75,7 +75,11 @@ export default {
   },
   methods: {
     switchConclusion(id) {
-      this.activeConclusion = id
+      if (this.conclusions.find(c => c.id === id)) {
+        this.activeConclusion = id
+      } else {
+        console.warn(`Invalid conclusion id: ${id}`)
+      }
     }
   }
 }
@@ -94,7 +98,6 @@ export default {
   text-align: center;
   padding: 20px;
   border-bottom: 1px solid rgba(92, 187, 255, 0.2);
-  flex-shrink: 0;
 }
 
 .section-title {
@@ -148,8 +151,8 @@ export default {
 }
 
 .conclusion-content {
-  flex: 1;
-  overflow: visible;
+  height: calc(100% - 160px);
+  overflow: hidden;
 }
 
 /* 响应式设计 */
